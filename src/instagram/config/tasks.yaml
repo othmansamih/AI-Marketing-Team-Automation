@@ -1,0 +1,71 @@
+market_research_task:
+  description: >
+    Conduct a detailed market research for the given Instagram page description and topic of the week.
+    
+    Instagram page description:
+    ```
+    {instagram_page_description}
+    ```
+
+    Topic of the week:
+    ```
+    {topic_of_the_week}
+    ```
+
+    Current data:
+    ```
+    {current_date}
+    ```
+
+    Identify trending hashtags, audience preferences, and optimal posting times.
+  expected_output: >
+    A research summary containing:
+    - Top 10 trending hashtags.
+    - Key audience insights.
+    - Best posting times for engagement.
+  agent: market_researcher
+
+
+content_calendar_task:
+  description: >
+    Based on the research insights, create a 7-day content calendar that includes:
+    - Titles for each post.
+    - Hashtags for each post.
+    - Recommended publishing times.
+  expected_output: >
+    A structured content calendar for the week with:
+    - Titles for 7 posts.
+    - Hashtags tailored to each day.
+    - Publishing times optimized for audience engagement.
+  agent: content_strategist
+
+
+copy_writing_task:
+  description: >
+    Write SEO-optimized captions for each post in the content calendar.
+    Captions should be engaging and tailored to the Instagram page style and topic.
+  expected_output: >
+    A set of 7 captions, one for each day's post, optimized for Instagram and search engines.
+  agent: copy_writer
+
+
+image_description_task:
+  description: >
+    Generate detailed and imaginative descriptions for the images to accompany each post in the content calendar.
+    The descriptions should be vivid and detailed enough for use with AI image generation tools.
+  expected_output: >
+    7 vivid image descriptions corresponding to the content calendar, each aligned with the topic and style.
+  agent: visual_artist
+
+
+compile_weekly_content_task:
+  description: >
+    Compile all research insights, the content calendar, captions, and image descriptions into a single document.
+    Ensure the document is cohesive and formatted for easy understanding.
+  expected_output: >
+    A markdown document containing:
+    - The weekly content calendar.
+    - Captions and hashtags for each post.
+    - Image descriptions for each post.
+    - Research insights summary.
+  agent: content_strategist
