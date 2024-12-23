@@ -1,54 +1,124 @@
-# Instagram Crew
+# AI Marketing Team Automation Project
 
-Welcome to the Instagram Crew project, powered by [crewAI](https://crewai.com). This template is designed to help you set up a multi-agent AI system with ease, leveraging the powerful and flexible framework provided by crewAI. Our goal is to enable your agents to collaborate effectively on complex tasks, maximizing their collective intelligence and capabilities.
+This project automates the process of researching, planning, and creating Instagram content using CrewAI. It leverages agent-based architecture and predefined tasks to streamline content creation for Instagram pages.
 
-## Installation
+## Features
 
-Ensure you have Python >=3.10 <=3.13 installed on your system. This project uses [UV](https://docs.astral.sh/uv/) for dependency management and package handling, offering a seamless setup and execution experience.
+- **Market Research**: Automatically identify Instagram trends, hashtags, and audience insights.
+- **Content Strategy**: Create a structured 7-day content calendar based on research.
+- **Copywriting**: Generate SEO-optimized and engaging captions tailored to the content strategy.
+- **Image Descriptions**: Produce vivid descriptions for visuals to inspire or directly use with AI image generation tools.
+- **Automation Pipeline**: Compile all outputs into a cohesive weekly content plan.
 
-First, if you haven't already, install uv:
 
-```bash
-pip install uv
+
+## Project Structure
+```markdown
+src/
+├── instagram/
+│ ├── config/
+│ │ ├── agents.yaml # Configuration for agents
+│ │ ├── tasks.yaml # Configuration for tasks
+│ ├── tools/
+│ │ └── search_tools.py # Tools for web and Instagram searches
+│ ├── crew.py # Core CrewAI logic
+│ └── main.py # Entry point for running, training, and testing the crew
+├── tasks/ # Directory for task outputs
+├── .env # Environment variables
+├── .gitignore # Git ignore file
+├── pyproject.toml # Python project configuration
 ```
 
-Next, navigate to your project directory and install the dependencies:
+```markdown
+## Getting Started
 
-(Optional) Lock the dependencies and install them by using the CLI command:
-```bash
-crewai install
-```
-### Customizing
+### Prerequisites
 
-**Add your `OPENAI_API_KEY` into the `.env` file**
+- Python ">=3.10,<=3.13"
+- An OpenAI API key
+- A Serper API key for Google Search integration
 
-- Modify `src/instagram/config/agents.yaml` to define your agents
-- Modify `src/instagram/config/tasks.yaml` to define your tasks
-- Modify `src/instagram/crew.py` to add your own logic, tools and specific args
-- Modify `src/instagram/main.py` to add custom inputs for your agents and tasks
+### Installation
 
-## Running the Project
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   cd instagram
 
-To kickstart your crew of AI agents and begin task execution, run this from the root folder of your project:
-
-```bash
-$ crewai run
 ```
 
-This command initializes the instagram Crew, assembling the agents and assigning them tasks as defined in your configuration.
+1. Install dependencies:
+    
+    ```bash
+    pip install -r requirements.txt
+    ```
+    
+2. Create a `.env` file and add your API keys:
+    
+    ```
+    SERPER_API_KEY=<your-serper-api-key>
+    OPENAI_API_KEY=<your-openai-api-key>
+    
+    # use the config below if you want to trace the llm calls
+    LANGCHAIN_TRACING_V2=true
+    LANGCHAIN_ENDPOINT="https://api.smith.langchain.com"
+    LANGCHAIN_API_KEY=<your-langchain-api-key>
+    LANGCHAIN_PROJECT="project-name"
+    ```
+    
 
-This example, unmodified, will run the create a `report.md` file with the output of a research on LLMs in the root folder.
+### Run the Crew
 
-## Understanding Your Crew
+To execute the workflow:
 
-The instagram Crew is composed of multiple AI agents, each with unique roles, goals, and tools. These agents collaborate on a series of tasks, defined in `config/tasks.yaml`, leveraging their collective skills to achieve complex objectives. The `config/agents.yaml` file outlines the capabilities and configurations of each agent in your crew.
+```bash
+crewai run
+```
 
-## Support
+You'll be prompted to provide:
 
-For support, questions, or feedback regarding the Instagram Crew or crewAI.
-- Visit our [documentation](https://docs.crewai.com)
-- Reach out to us through our [GitHub repository](https://github.com/joaomdmoura/crewai)
-- [Join our Discord](https://discord.com/invite/X4JWnZnxPb)
-- [Chat with our docs](https://chatg.pt/DWjSBZn)
+- Instagram page description
+- Topic of the week
 
-Let's create wonders together with the power and simplicity of crewAI.
+## Configuration
+
+### Agents
+
+Defined in `src/instagram/config/agents.yaml`, agents represent the roles in the workflow:
+
+- **Market Researcher**: Conducts Instagram market research.
+- **Content Strategist**: Plans the weekly content calendar.
+- **Copywriter**: Writes captions for posts.
+- **Visual Artist**: Describes visuals for posts.
+
+### Tasks
+
+Defined in `src/instagram/config/tasks.yaml`, tasks represent the actions taken by agents:
+
+- `market_research_task`
+- `content_calendar_task`
+- `copy_writing_task`
+- `image_description_task`
+- `compile_weekly_content_task`
+
+## Tools
+
+Custom tools in `src/instagram/tools/search_tools.py` allow agents to:
+
+- Search the internet or Instagram.
+- Open and extract content from web pages.
+
+## Output
+
+Task results are saved in the `tasks/` directory as markdown files:
+
+- `1_market_research_task.md`
+- `2_content_calendar_task.md`
+- `3_copy_writing_task.md`
+- `4_image_description_task.md`
+- `5_compile_weekly_content_task.md`
+
+## Dependencies
+
+- CrewAI (`crewai[tools]>=0.86.0`)
+- Python libraries as specified in `pyproject.toml`
