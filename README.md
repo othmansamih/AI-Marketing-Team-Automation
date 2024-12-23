@@ -1,5 +1,7 @@
 # AI Marketing Team Automation Project
 
+![AI Marketing Team Automation](https://raw.githubusercontent.com/othmansamih/AI-Marketing-Team-Automation/main/assets/AI-Marketing-Team-Automation.png)
+
 This project automates the process of researching, planning, and creating Instagram content using CrewAI. It leverages agent-based architecture and predefined tasks to streamline content creation for Instagram pages.
 
 ## Features
