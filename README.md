@@ -29,7 +29,7 @@ src/
 ├── pyproject.toml # Python project configuration
 ```
 
-```markdown
+
 ## Getting Started
 
 ### Prerequisites
@@ -41,11 +41,11 @@ src/
 ### Installation
 
 1. Clone the repository:
+
    ```bash
    git clone <repository-url>
    cd instagram
-
-```
+   ```
 
 1. Install dependencies:
     
